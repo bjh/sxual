@@ -13,6 +13,11 @@ Gem::Specification.new do |s|
   s.description = %q{Generate Rails schemas or Migrations from SQLEditor .sqs files.}
 
   s.rubyforge_project = "sxual"
+  
+  # production
+  s.add_dependency('nokogiri')
+  # development/testing
+  s.add_development_dependency('rspec')
 
   s.files         = `git ls-files`.split("\n")
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
