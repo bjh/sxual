@@ -1,1 +1,4 @@
 manipulating XML for the greater good of mankind.
+
+Should generate a Rails schema from an SQS file.
+Should eventually generate/update and SQS file from a Rails schema.
