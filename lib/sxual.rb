@@ -16,7 +16,9 @@ module Sxual
       end
       
       puts "don't bother knocking...\nsxual is getting it's groove on with [#{args.value(:file)}]"
-      SqsParser.parse(args.value(:file))
+      
+      parser = SqsParser.new
+      parser.parse(args.value(:file))
     end
   end
 end
