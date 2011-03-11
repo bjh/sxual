@@ -2,4 +2,7 @@
 
 require 'sxual'
 
+app = Sxual::Application.new
+app.run()
+
 
