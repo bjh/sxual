@@ -16,6 +16,8 @@ Gem::Specification.new do |s|
   
   # production
   s.add_dependency('nokogiri')
+  s.add_dependency('trollop')
+  
   # development/testing
   s.add_development_dependency('rspec')
 
