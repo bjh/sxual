@@ -23,7 +23,10 @@ module Sxual
       
       sqs = SqsParser.new
       sqs.parse(args.value(:file))
-      
+
+      sqs.tables.each do |table|
+        puts "table: #{table}"
+      end
       
     end
   end
