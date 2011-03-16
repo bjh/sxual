@@ -6,7 +6,7 @@ module Sxual
       end
 
       def print
-        @data.tables.each do |table|
+        @data.each do |table|
           puts "table: #{table[:name]}"
 
           table[:fields].each do |field|
