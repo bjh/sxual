@@ -33,9 +33,10 @@ module Sxual
           puts "    field: #{field}"
         end
 
-        table[:constraints].each do |cnst|
-          puts "    constriant: #{cnst}"
-        end
+        # table[:constraints].each do |cnst|
+        #   puts "    constriant: #{cnst}"
+        # end
+        puts "CONStRAInts; #{table[:constraints]]}"
       end
       
     end
