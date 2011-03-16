@@ -22,14 +22,13 @@ module Sxual
           :name => table.xpath('name').text,
           :constraints => constraints(table),
           :fks => foreign_keys(table),
-          #:indexes => indexes(table),
+          :indexes => indexes(table),
           :fields => fields(table),
         }
       end
     end
 
     def foreign_keys(table)
-      # SQLForeignKey
       table.xpath('SQLForeignKey').collect do |fk|
         xp = Xpath.new(fk)
         fk_data = Xpath.new(fk.xpath('SQLForeignKeyEntry'))
@@ -47,9 +46,10 @@ module Sxual
     def constraints(table)
       table.xpath('SQLConstraint').collect do |constraint|
         xp = Xpath.new(constraint)
+        
         {
           :name => xp['name'],
-          :field_names => constraint.xpath('fieldName').map { |f| f.text },
+          :field_names => constraint.xpath('fieldName').map(&:text),
           :index_type => xp['indexType'].downcase.to_sym
         }
       end
@@ -96,10 +96,11 @@ module Sxual
     def indexes(table)
       table.xpath('SQLIndex').collect do |index|
         puts "index: #{index}"
+        xp = Xpath.new(index)
         {
-          :name => index.xpath('name').text,
-          :field_names => index.xpath('fieldName').map { |f| f.text },
-          :not_null => index.xpath('notNull').text,
+          :name => xp['name'],
+          :field_names => index.xpath('fieldName').map(&:text),
+          :not_null => xp['notNull'],
         }
       end
     end
