@@ -22,22 +22,8 @@ module Sxual
       #parser.parse(args.value(:file))
       
       sqs = SqsParser.new
-      sqs.parse(args.value(:file)) do |table|
-        puts table.inspect
-
-        table.fields do |f|
-           puts f
-        end
-        # 
-        # table.constraints do |c|
-        #   puts c
-        # end
-        # 
-        # table.indexes do |i|
-        #   puts i
-        # end
-
-      end
+      sqs.parse(args.value(:file))
+      
       
     end
   end

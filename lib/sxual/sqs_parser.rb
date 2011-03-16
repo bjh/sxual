@@ -1,29 +1,32 @@
 
 module Sxual
   class SqsParser
+    attr_reader :tables
+    
+    def initialize
+      @tables = []
+    end
     
     def parse(file)
       begin
         @xml = Nokogiri::XML(File.open(file))
-        read()
+        @tables = read()
       rescue => e
         puts "SqsParser::parse: #{e}"
       end
     end
 
     def read()
-      @xml.xpath('SQLContainer/SQLTable').each do |table|
+      @xml.xpath('SQLContainer/SQLTable').collect do |table|
         puts '-' * 70
         puts "TABLE-NAME: " << table.xpath('name').text
 
-        t = {
+        {
           :name => table.xpath('name').text,
           #:contraints => constraints(table),
           #:indexes => indexes(table),
           :fields => fields(table),
         }
-
-        #block.call(t)
       end
     end
     
