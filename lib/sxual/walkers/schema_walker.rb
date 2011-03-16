@@ -8,7 +8,7 @@ module Sxual
       def walk
         @data.each do |table|
 
-          puts "FUCK: #{table[:fields].has_key?('id')}"
+          puts "FUCK: #{table[:fields].contains?('id')}"
           id =  table[:fields].delete('id')
           puts "id: #{id}"
           if id
