@@ -20,7 +20,7 @@ module Sxual
           :name => table.xpath('name').text,
           #:contraints => constraints(table),
           #:indexes => indexes(table),
-          #:fields => fields(table),
+          :fields => fields(table),
         }
 
         #block.call(t)
@@ -28,17 +28,13 @@ module Sxual
     end
     
     def constraints(table)
-      sql_constraints = []
-      table.xpath('SQLConstraint').each do |field|
-        c = {
+      table.xpath('SQLConstraint').collect do |field|
+        {
           :name => field.xpath('name').text,
           :fieldNames => field.xpath('fieldName').map { |f| f.text },
           :indexType => field.xpath('indexType').text,
         }
-        sql_constraints << c
       end
-      
-      return sql_constraints
     end
     
     def fields(table)
