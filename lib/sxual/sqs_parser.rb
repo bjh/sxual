@@ -31,8 +31,8 @@ module Sxual
       table.xpath('SQLConstraint').collect do |field|
         {
           :name => field.xpath('name').text,
-          :fieldNames => field.xpath('fieldName').map { |f| f.text },
-          :indexType => field.xpath('indexType').text,
+          :field_names => field.xpath('fieldName').map { |f| f.text },
+          :index_type => field.xpath('indexType').text,
         }
       end
     end
@@ -41,11 +41,10 @@ module Sxual
       table.xpath('SQLField').collect do |field|
         xp = Xpath.new(field)
 
-        puts "name: #{xp['name']}"
         {
           :name => xp['name'],
           :type => xp['type'],
-          :notNull => xp['notNull'] == "1",
+          :not_null => xp['notNull'] == "1",
           # this may have mutliple fields, and would be getting squashed
           #:referencesField => xp['referencesField').first,
           #:referencesTable => xp['referencesTable').first.text,
@@ -81,8 +80,8 @@ module Sxual
         puts "index: #{index}"
         {
           :name => index.xpath('name').text,
-          :fieldNames => index.xpath('fieldName').map { |f| f.text },
-          :notNull => index.xpath('notNull').text,
+          :field_names => index.xpath('fieldName').map { |f| f.text },
+          :not_null => index.xpath('notNull').text,
         }
       end
     end

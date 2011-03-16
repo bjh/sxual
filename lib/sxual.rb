@@ -25,9 +25,9 @@ module Sxual
       sqs.parse(args.value(:file)) do |table|
         puts table.inspect
 
-        # table.fields do |f|
-        #   puts f
-        # end
+        table.fields do |f|
+           puts f
+        end
         # 
         # table.constraints do |c|
         #   puts c
