@@ -38,9 +38,9 @@ module Sxual
     end
     
     def fields(table)
-      sql_fields =[]
-      table.xpath('SQLField').each do |field|
-        f = {
+      table.xpath('SQLField').collect do |field|
+        puts "field: #{field}"
+        {
           :name => field.xpath('name').text,
           :type => field.xpath('type').text,
           :notNull => field.xpath('notNull').text == "1",
@@ -71,18 +71,16 @@ module Sxual
           # otherwise the other model could have a has_many
           
         }
-        sql_fields << f
       end
-      return sql_fields
     end
     
     def indexes(table)
-      table.xpath('SQLIndex').collect do |field|
-        puts "field: #{field}"
+      table.xpath('SQLIndex').collect do |index|
+        puts "index: #{index}"
         {
-          :name => field.xpath('name').text,
-          :fieldNames => field.xpath('fieldName').map { |f| f.text },
-          :notNull => field.xpath('notNull').text,
+          :name => index.xpath('name').text,
+          :fieldNames => index.xpath('fieldName').map { |f| f.text },
+          :notNull => index.xpath('notNull').text,
         }
       end
     end
