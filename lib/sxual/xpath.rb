@@ -17,7 +17,7 @@ module Sxual
           puts "Xpath error: xpath='#{xpath}' :: #{error}"
         end
 
-        return if default == :none
+        if default == :none
           ''
         else
           default
