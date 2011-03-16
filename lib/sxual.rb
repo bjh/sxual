@@ -4,6 +4,7 @@ require 'trollop'
 require 'sxual/args'
 require 'sxual/xpath'
 require 'sxual/sqs_parser'
+require 'sxual/walkers/default_walker'
 
 module Sxual
   DEBUG = true
@@ -14,7 +15,7 @@ module Sxual
       args.parse
 
       if ! args.set? :file
-        puts "no file to parse"
+        puts "sxual cannot get busy without a file"
         exit(69)
       end
       
@@ -26,17 +27,7 @@ module Sxual
       sqs = SqsParser.new
       sqs.parse(args.value(:file))
 
-      sqs.tables.each do |table|
-        puts "table: #{table[:name]}"
-
-        table[:fields].each do |field|
-          puts "    FIELD: #{field}"
-        end
-
-        puts "    CONSTRAINTS; #{table[:constraints]}"
-        puts "    FOREIGN KEYS: #{table[:fks]}"
-        puts "    INDEXES: #{table[:indexes]}"
-      end
+      Walkers::DefaultWalker.new(sqs.tables).print()
       
     end
   end

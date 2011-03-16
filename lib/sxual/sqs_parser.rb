@@ -9,15 +9,17 @@ module Sxual
     
     def parse(file)
       begin
-        @xml = Nokogiri::XML(File.open(file))
-        @tables = read()
+        xml = Nokogiri::XML(File.open(file))
+        @tables = read(xml)
       rescue => e
         puts "SqsParser::parse: #{e}"
       end
     end
 
-    def read()
-      @xml.xpath('SQLContainer/SQLTable').collect do |table|
+  private
+    
+    def read(xml)
+      xml.xpath('SQLContainer/SQLTable').collect do |table|
         {
           :name => table.xpath('name').text,
           :constraints => constraints(table),
