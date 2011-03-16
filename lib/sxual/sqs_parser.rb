@@ -2,6 +2,7 @@
 
 module Sxual
   class SqsParser
+    
     def parse(file)
       begin
         @xml = Nokogiri::XML(File.open(file))
@@ -11,15 +12,20 @@ module Sxual
       end
     end
 
-    def read
+    def read(  )
+      tables = []
       @xml.xpath('SQLContainer/SQLTable').each do |table|
         puts '-' * 70
         puts "TABLE-NAME: " << table.xpath('name').text
         
-        table.xpath('SQLField').each do |field|
-          puts "  " << field.xpath('name').text
-        end
+        t = {
+          :name => field.xpath('name').text,
+          :contraints = parse_constraints(field),
+          :indexes = parse_indexes(field),
+          :fields = parse_fields(field)m
+        }
       end
     end
+    
   end
 end
