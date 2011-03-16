@@ -29,7 +29,8 @@ module Sxual
       sqs = SqsParser.new
       sqs.parse(args.value(:file))
 
-      Walkers::DefaultWalker.new(sqs.tables).walk()
+      #Walkers::DefaultWalker.new(sqs.tables).walk()
+      Walkers::SchemaWalker.new(sqs.tables).walk()
       
     end
   end
