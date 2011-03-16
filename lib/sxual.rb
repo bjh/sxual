@@ -36,7 +36,7 @@ module Sxual
         # table[:constraints].each do |cnst|
         #   puts "    constriant: #{cnst}"
         # end
-        puts "CONStRAInts; #{table[:constraints]]}"
+        puts "CONStRAInts; #{table[:constraints]}"
       end
       
     end
