@@ -9,15 +9,19 @@ module Sxual
     
     # shortform for getting at the XmlNode::text
     # namespace should be a hash {'media' => 'http://fakuri.com/voodoo'}
-    def [](xpath, namespace={})
+    def [](xpath, default=:none, namespace={})
       begin
         @xml.at_xpath(xpath, namespace).text
       rescue => error
         if Sxual::DEBUG
-          puts "Xpath error: xpath=#{xpath} - #{error}"
+          puts "Xpath error: xpath='#{xpath}' :: #{error}"
         end
-        
-        return ''
+
+        return if default == :none
+          ''
+        else
+          default
+        end
       end
     end
     
