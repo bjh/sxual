@@ -37,6 +37,7 @@ module Sxual
         #   puts "    constriant: #{cnst}"
         # end
         puts "CONStRAInts; #{table[:constraints]}"
+        puts "FoREIGN KEYS: #{table[:fks]}"
       end
       
     end

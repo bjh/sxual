@@ -21,8 +21,25 @@ module Sxual
         {
           :name => table.xpath('name').text,
           :constraints => constraints(table),
+          :fks => foreign_keys(table),
           #:indexes => indexes(table),
           :fields => fields(table),
+        }
+      end
+    end
+
+    def foreign_keys(table)
+      # SQLForeignKey
+      table.xpath('SQLForeignKey').collect do |fk|
+        xp = Xpath.new(fk)
+        fk_data = Xpath.new(fk.xpath('SQLForeignKeyEntry'))
+        
+        {
+          :name => xp['name'],
+          :delete => xp['deleteAction'],
+          :target_table => xp['targetTableName'],
+          :target_field => fk_data['targetFieldName'],
+          :source_field => fk_data['sourceFieldName']
         }
       end
     end
