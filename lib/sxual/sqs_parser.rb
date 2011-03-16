@@ -49,7 +49,7 @@ module Sxual
         
         {
           :name => xp['name'],
-          :field_names => constraint.xpath('fieldName').map(&:text),
+          :fields => constraint.xpath('fieldName').map(&:text),
           :index_type => xp['indexType'].downcase.to_sym
         }
       end
@@ -62,7 +62,7 @@ module Sxual
         {
           :name => xp['name'],
           :type => xp['type'].to_sym,
-          :not_null => xp.if_exists('notNull', true, false),
+          :not_null =>  xp.if_exists('notNull', true, false),
           # this may have mutliple fields, and would be getting squashed
           #:referencesField => xp['referencesField').first,
           #:referencesTable => xp['referencesTable').first.text,
@@ -96,10 +96,11 @@ module Sxual
     def indexes(table)
       table.xpath('SQLIndex').collect do |index|
         xp = Xpath.new(index)
+        
         {
           :name => xp['name'],
-          :field_names => index.xpath('fieldName').map(&:text),
-          :not_null => xp['notNull'],
+          :fields => index.xpath('fieldName').map(&:text),
+          :not_null => xp.if_exists('notNull', true, false),
         }
       end
     end
