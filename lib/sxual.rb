@@ -30,7 +30,7 @@ module Sxual
         puts "table: #{table[:name]}"
 
         table[:fields].each do |field|
-          puts "field: #{field}"
+          puts "    field: #{field}"
         end
       end
       
