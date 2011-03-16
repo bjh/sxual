@@ -14,7 +14,7 @@ module Sxual
         @xml.at_xpath(xpath, namespace).text
       rescue => error
         if Sxual::DEBUG
-          puts "Xpath error: #{xpath} - #{error}"
+          puts "Xpath error: xpath=#{xpath} - #{error}"
         end
         
         return ''
@@ -27,7 +27,7 @@ module Sxual
         @xml.at_xpath(xpath)
       rescue => error
         if Sxual::DEBUG
-          Lumber::info "ERROR - Xpath#at(#{xpath}), #{error}"
+          puts "ERROR - Xpath#at(#{xpath}), #{error}"
         end
         
         return ''
