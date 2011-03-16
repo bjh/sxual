@@ -5,7 +5,7 @@ module Sxual
         @data = data
       end
 
-      def print
+      def walk
         @data.each do |table|
           puts "TABLE: #{table[:name]}"
 
