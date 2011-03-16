@@ -42,8 +42,8 @@ module Sxual
         xp = Xpath.new(field)
 
         {
-          :name => xp['name'],
-          :type => xp['type'],
+          :name => xp['name'].to_sym,
+          :type => xp['type'].to_sym,
           :not_null => xp.if_exists('notNull', true, false),
           # this may have mutliple fields, and would be getting squashed
           #:referencesField => xp['referencesField').first,
