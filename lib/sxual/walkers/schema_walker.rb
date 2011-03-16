@@ -7,8 +7,15 @@ module Sxual
 
       def walk
         @data.each do |table|
-          puts "create_table :#{table[:name]}, do |t|"
 
+          if table[:fields].delete(:id)
+            force = ":force => true"
+          else
+            force = ""
+          end          
+          
+          puts "create_table :#{table[:name]}, #{force} do |t|"          
+          
           table[:fields].each do |field|
             print "\tt.#{field[:type]}, :#{field[:name]}"
             print ", :default => #{field[:default]}" if field[:default]

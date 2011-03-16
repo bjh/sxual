@@ -64,6 +64,7 @@ module Sxual
         {
           :name => xp['name'],
           :type => xp['type'],
+          #TODO: default needs more love, quote strings..things like that..
           :default => xp.if_exists('defaultValue', xp['defaultValue'], nil),
           :not_null =>  xp.if_exists('notNull', true, false),
           # this may have mutliple fields, and would be getting squashed
