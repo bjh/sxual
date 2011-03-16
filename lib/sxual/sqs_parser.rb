@@ -29,7 +29,9 @@ module Sxual
     
     def constraints(table)
       table.xpath('SQLConstraint').collect do |constraint|
+        puts "CONSTRAINT: #{constraint}"
         xp = Xpath.new(constraint)
+        
         {
           :name => xp['name'],
           #:field_names => xp['fieldName'].map { |f| f.text },
