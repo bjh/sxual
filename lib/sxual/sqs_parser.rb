@@ -39,14 +39,14 @@ module Sxual
     
     def fields(table)
       table.xpath('SQLField').collect do |field|
-        puts "field: #{field}"
+        xp = Xpath.new(field)
         {
-          :name => field.xpath('name').text,
-          :type => field.xpath('type').text,
-          :notNull => field.xpath('notNull').text == "1",
+          :name => xp['name'],
+          :type => xp['type'],
+          :notNull => xp['notNull'] == "1",
           # this may have mutliple fields, and would be getting squashed
-          :referencesField => field.xpath('referencesField').first,
-          :referencesTable => field.xpath('referencesTable').first.text,
+          #:referencesField => xp['referencesField').first,
+          #:referencesTable => xp['referencesTable').first.text,
           
           # todo: check for data type lengths
           # e.g.: text(32)
