@@ -33,11 +33,8 @@ module Sxual
           puts "    field: #{field}"
         end
 
-        # table[:constraints].each do |cnst|
-        #   puts "    constriant: #{cnst}"
-        # end
-        puts "CONStRAInts; #{table[:constraints]}"
-        puts "FoREIGN KEYS: #{table[:fks]}"
+        puts "    CONSTRAINTS; #{table[:constraints]}"
+        puts "    FOREIGN KEYS: #{table[:fks]}"
       end
       
     end
