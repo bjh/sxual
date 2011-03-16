@@ -8,7 +8,7 @@ module Sxual
       def walk
         @data.each do |table|
 
-          if table[:fields].delete(:id)
+          if table[:fields].delete('id')
             force = ":force => true"
           else
             force = ""
