@@ -100,7 +100,7 @@ module Sxual
         {
           :name => xp['name'],
           :fields => index.xpath('fieldName').map(&:text),
-          :not_null => xp.if_exists('notNull', true, false),
+          :not_null => xp.if_exists('notNull', true, false)
         }
       end
     end
