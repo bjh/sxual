@@ -10,7 +10,9 @@ module Sxual
           puts "create_table :#{table[:name]}, do |t|"
 
           table[:fields].each do |field|
-            puts "\tt.#{field[:type]}, :#{field[:name]}"
+            put "\tt.#{field[:type]}, :#{field[:name]}"
+            put ", :default => #{field[:default]}" if field[:default]
+            put "\n"
           end
 
           puts "end"
