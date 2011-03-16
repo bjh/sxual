@@ -33,7 +33,7 @@ module Sxual
         {
           :name => xp['name'],
           :field_names => constraint.xpath('fieldName').map { |f| f.text },
-          :index_type => xp['indexType']
+          :index_type => xp['indexType'].downcase.to_sym
         }
       end
     end
@@ -44,7 +44,7 @@ module Sxual
 
         {
           :name => xp['name'],
-          :type => xp['type'],
+          :type => xp['type'].to_sym,
           :not_null => xp.if_exists('notNull', true, false),
           # this may have mutliple fields, and would be getting squashed
           #:referencesField => xp['referencesField').first,
