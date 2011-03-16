@@ -13,9 +13,9 @@ module Sxual
       begin
         @xml.at_xpath(xpath, namespace).text
       rescue => error
-        # if Sxual::DEBUG
-        #   puts "Xpath error: xpath='#{xpath}' :: #{error}"
-        # end
+        if Sxual::DEBUG
+          puts "Xpath error: xpath='#{xpath}' :: #{error}"
+        end
 
         return ''
       end
