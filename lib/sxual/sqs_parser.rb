@@ -40,6 +40,8 @@ module Sxual
     def fields(table)
       table.xpath('SQLField').collect do |field|
         xp = Xpath.new(field)
+
+        puts "name: #{xp['name']}"
         {
           :name => xp['name'],
           :type => xp['type'],
