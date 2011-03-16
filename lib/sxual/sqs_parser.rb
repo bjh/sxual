@@ -77,16 +77,13 @@ module Sxual
     end
     
     def indexes(table)
-      sql_indexes = []
-      table.xpath('SQLIndex').each do |field|
-        i = {
+      table.xpath('SQLIndex').collect do |field|
+        {
           :name => field.xpath('name').text,
           :fieldNames => field.xpath('fieldName').map { |f| f.text },
           :notNull => field.xpath('notNull').text,
         }
-        sql_indexes << i
       end
-      return sql_indexes
     end
     
   end

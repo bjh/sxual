@@ -2,6 +2,7 @@ require 'nokogiri'
 require 'trollop'
 
 require 'sxual/args'
+require 'sxual/xpath'
 require 'sxual/sqs_parser'
 
 module Sxual
