@@ -20,7 +20,7 @@ module Sxual
       @xml.xpath('SQLContainer/SQLTable').collect do |table|
         {
           :name => table.xpath('name').text,
-          #:contraints => constraints(table),
+          :contraints => constraints(table),
           #:indexes => indexes(table),
           :fields => fields(table),
         }
@@ -28,11 +28,12 @@ module Sxual
     end
     
     def constraints(table)
-      table.xpath('SQLConstraint').collect do |field|
+      table.xpath('SQLConstraint').collect do |constraint|
+        xp = Xpath.new(constraint)
         {
-          :name => field.xpath('name').text,
-          :field_names => field.xpath('fieldName').map { |f| f.text },
-          :index_type => field.xpath('indexType').text,
+          :name => xp['name'],
+          #:field_names => xp['fieldName'].map { |f| f.text },
+          :index_type => xp['indexType'],
         }
       end
     end
@@ -42,8 +43,8 @@ module Sxual
         xp = Xpath.new(field)
 
         {
-          :name => xp['name'].to_sym,
-          :type => xp['type'].to_sym,
+          :name => xp['name'],
+          :type => xp['type'],
           :not_null => xp.if_exists('notNull', true, false),
           # this may have mutliple fields, and would be getting squashed
           #:referencesField => xp['referencesField').first,
