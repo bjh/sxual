@@ -63,7 +63,8 @@ module Sxual
 
         {
           :name => xp['name'],
-          :type => xp['type'].to_sym,
+          :type => xp['type'],
+          :default_value => xp['defaultValue'],
           :not_null =>  xp.if_exists('notNull', true, false),
           # this may have mutliple fields, and would be getting squashed
           #:referencesField => xp['referencesField').first,
