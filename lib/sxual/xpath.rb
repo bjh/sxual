@@ -18,8 +18,10 @@ module Sxual
         end
 
         if default == :none
+          puts "returning empty string"
           ''
         else
+          puts "returning default #{default}"
           default
         end
       end
