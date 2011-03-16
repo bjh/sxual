@@ -12,7 +12,7 @@ module Sxual
           table[:fields].each do |field|
             print "\tt.#{field[:type]}, :#{field[:name]}"
             #print ", :default => #{field[:default]}" if field[:default]
-            print ", :null => false" if field[:is_null]
+            print ", :null => false" if field[:not_null]
             print "\n"
           end
 
