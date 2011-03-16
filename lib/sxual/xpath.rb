@@ -17,7 +17,7 @@ module Sxual
           puts "Xpath error: #{xpath} - #{e}"
         end
         
-        ''
+        return ''
       end
     end
     
@@ -30,7 +30,7 @@ module Sxual
           Lumber::info "ERROR - Xpath#at(#{xpath})"
         end
         
-        ''
+        return ''
       end
     end
   end
