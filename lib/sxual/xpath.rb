@@ -9,7 +9,7 @@ module Sxual
     
     # shortform for getting at the XmlNode::text
     # namespace should be a hash {'media' => 'http://fakuri.com/voodoo'}
-    def [](xpath, default=:none, namespace={})
+    def [](xpath, namespace={})
       begin
         @xml.at_xpath(xpath, namespace).text
       rescue => error
@@ -17,13 +17,20 @@ module Sxual
           puts "Xpath error: xpath='#{xpath}' :: #{error}"
         end
 
-        if default == :none
-          puts "returning empty string"
-          ''
-        else
-          puts "returning default #{default}"
-          default
-        end
+        return ''
+      end
+    end
+
+    # if XPATH exists return the yes_val
+    # OR return the no_val if it does not exist
+    # i.e. an XPATH that return a "1" will return true or false
+    # if_exists('shitaki', true, false)
+    # basically existence of the XPATH node will return yes_val
+    def if_exists(xpath, yes_val, no_val)
+      if self[xpath].size > 1
+        yes_val
+      else
+        no_val
       end
     end
     

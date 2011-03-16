@@ -27,7 +27,11 @@ module Sxual
       sqs.parse(args.value(:file))
 
       sqs.tables.each do |table|
-        puts "table: #{table}"
+        puts "table: #{table[:name]}"
+
+        table[:fields].each do |field|
+          puts "field: #{field}"
+        end
       end
       
     end

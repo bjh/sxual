@@ -44,7 +44,7 @@ module Sxual
         {
           :name => xp['name'],
           :type => xp['type'],
-          :not_null => xp['notNull', false],
+          :not_null => xp.if_exists('notNull', true, false),
           # this may have mutliple fields, and would be getting squashed
           #:referencesField => xp['referencesField').first,
           #:referencesTable => xp['referencesTable').first.text,
