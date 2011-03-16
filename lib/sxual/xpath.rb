@@ -27,12 +27,9 @@ module Sxual
     # if_exists('shitaki', true, false)
     # basically existence of the XPATH node will return yes_val
     def if_exists(xpath, yes_val, no_val)
-      puts "if_exists:: #{xpath}, #{self[xpath]}"
       if self[xpath].size > 0
-        puts "YES"
         yes_val
       else
-        puts "NO"
         no_val
       end
     end
