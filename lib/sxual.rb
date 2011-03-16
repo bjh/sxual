@@ -18,7 +18,26 @@ module Sxual
       puts "don't bother knocking...\nsxual is getting it's groove on with [#{args.value(:file)}]"
       
       parser = SqsParser.new
-      parser.parse(args.value(:file))
+      #parser.parse(args.value(:file))
+      
+      sqs = SqsParser.new
+      sqs.parse(args.value(:file)) do |table|
+        puts table.inspect
+
+        # table.fields do |f|
+        #   puts f
+        # end
+        # 
+        # table.constraints do |c|
+        #   puts c
+        # end
+        # 
+        # table.indexes do |i|
+        #   puts i
+        # end
+
+      end
+      
     end
   end
 end
