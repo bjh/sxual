@@ -78,6 +78,7 @@ module Sxual
     
     def indexes(table)
       table.xpath('SQLIndex').collect do |field|
+        puts "field: #{field}"
         {
           :name => field.xpath('name').text,
           :fieldNames => field.xpath('fieldName').map { |f| f.text },
