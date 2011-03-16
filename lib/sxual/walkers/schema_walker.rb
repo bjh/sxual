@@ -8,7 +8,9 @@ module Sxual
       def walk
         @data.each do |table|
 
-          if table[:fields].delete('id')
+          id =  table[:fields].delete('id')
+          puts "id: #{id}"
+          if id
             force = ":force => true"
           else
             force = ""
