@@ -7,7 +7,7 @@ module Sxual
 
       def print
         @data.each do |table|
-          puts "table: #{table[:name]}"
+          puts "TABLE: #{table[:name]}"
 
           table[:fields].each do |field|
             puts "    FIELD: #{field}"
