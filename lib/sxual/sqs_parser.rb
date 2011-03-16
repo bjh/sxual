@@ -32,7 +32,7 @@ module Sxual
         xp = Xpath.new(constraint)
         {
           :name => xp['name'],
-          #:field_names => xp['fieldName'].map { |f| f.text },
+          :field_names => xp['fieldName'].map { |f| f.text },
           :index_type => xp['indexType']
         }
       end
