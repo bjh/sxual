@@ -4,7 +4,9 @@ require 'trollop'
 require 'sxual/args'
 require 'sxual/xpath'
 require 'sxual/sqs_parser'
+require 'sxual/walkers/base_walker'
 require 'sxual/walkers/default_walker'
+require 'sxual/walkers/schema_walker'
 
 module Sxual
   DEBUG = true

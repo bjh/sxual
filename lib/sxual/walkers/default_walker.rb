@@ -1,7 +1,5 @@
 module Sxual
   module Walkers
-    require 'walkers/base_walker'
-    
     class DefaultWalker < BaseWalker
       def initialize(data)
         @data = data
