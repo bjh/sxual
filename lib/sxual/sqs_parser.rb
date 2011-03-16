@@ -20,7 +20,7 @@ module Sxual
       @xml.xpath('SQLContainer/SQLTable').collect do |table|
         {
           :name => table.xpath('name').text,
-          :contraints => constraints(table),
+          :constraints => constraints(table),
           #:indexes => indexes(table),
           :fields => fields(table),
         }
