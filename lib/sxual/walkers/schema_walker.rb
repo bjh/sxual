@@ -7,10 +7,10 @@ module Sxual
 
       def walk
         @data.each do |table|
-          puts "create_table #{table[:name].to_sym}, do |t|"
+          puts "create_table :#{table[:name]}, do |t|"
 
           table[:fields].each do |field|
-            puts "t.#type, #{field.to_sym}"
+            puts "t.[type], :#{field[:name]}"
           end
 
           puts "end"
