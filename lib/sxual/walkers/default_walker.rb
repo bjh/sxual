@@ -1,6 +1,6 @@
 module Sxual
   module Walkers
-    class DefaultWalker
+    class DefaultWalker < BaseWalker
       def initialize(data)
         @data = data
       end
