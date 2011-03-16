@@ -35,6 +35,7 @@ module Sxual
 
         puts "    CONSTRAINTS; #{table[:constraints]}"
         puts "    FOREIGN KEYS: #{table[:fks]}"
+        puts "    INDEXES: #{table[:indexes]}"
       end
       
     end

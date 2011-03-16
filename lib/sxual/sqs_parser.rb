@@ -95,7 +95,6 @@ module Sxual
     
     def indexes(table)
       table.xpath('SQLIndex').collect do |index|
-        puts "index: #{index}"
         xp = Xpath.new(index)
         {
           :name => xp['name'],
