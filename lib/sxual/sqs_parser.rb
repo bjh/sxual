@@ -1,30 +1,29 @@
-require 'ostruct'
 
 module Sxual
   class SqsParser
     
-    def parse(file,&block)
-      #begin
+    def parse(file)
+      begin
         @xml = Nokogiri::XML(File.open(file))
-        read(&block)
-      #rescue => e
-      #  puts "ERROR: #{e}"
-      #end
+        read()
+      rescue => e
+        puts "SqsParser::parse: #{e}"
+      end
     end
 
-    def read(&block)
+    def read()
       @xml.xpath('SQLContainer/SQLTable').each do |table|
         puts '-' * 70
         puts "TABLE-NAME: " << table.xpath('name').text
 
         t = {
           :name => table.xpath('name').text,
-          :contraints => constraints(table),
-          :indexes => indexes(table),
-          :fields => fields(table),
+          #:contraints => constraints(table),
+          #:indexes => indexes(table),
+          #:fields => fields(table),
         }
 
-        block.call(t)
+        #block.call(t)
       end
     end
     
