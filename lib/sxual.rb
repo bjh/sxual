@@ -6,6 +6,8 @@ require 'sxual/xpath'
 require 'sxual/sqs_parser'
 
 module Sxual
+  DEBUG = true
+  
   class Application
     def run
       args = Args.new

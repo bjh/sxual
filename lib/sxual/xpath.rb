@@ -13,7 +13,10 @@ module Sxual
       begin
         @xml.at_xpath(xpath, namespace).text
       rescue => error
-        #Lumber::info "Xpath error: #{xpath} - #{e}"
+        if Sxual::DEBUG
+          puts "Xpath error: #{xpath} - #{e}"
+        end
+        
         ''
       end
     end
@@ -23,7 +26,10 @@ module Sxual
       begin
         @xml.at_xpath(xpath)
       rescue => error
-        #Lumber::info "ERROR - Xpath#at(#{xpath})"
+        if Sxual::DEBUG
+          Lumber::info "ERROR - Xpath#at(#{xpath})"
+        end
+        
         ''
       end
     end

@@ -18,9 +18,6 @@ module Sxual
 
     def read()
       @xml.xpath('SQLContainer/SQLTable').collect do |table|
-        puts '-' * 70
-        puts "TABLE-NAME: " << table.xpath('name').text
-
         {
           :name => table.xpath('name').text,
           #:contraints => constraints(table),
