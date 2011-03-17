@@ -7,25 +7,25 @@ module Sxual
 
       def walk
         @data.each do |table|
-
-          puts "FUCK: #{table[:fields].include?('id')}"
-          id =  table[:fields].delete('id')
-          puts "id: #{id}"
-          if id
-            force = ":force => true"
-          else
-            force = ""
-          end          
           
-          puts "create_table :#{table[:name]}, #{force} do |t|"          
           
-          table[:fields].each do |field|
-            print "\tt.#{field[:type]}, :#{field[:name]}"
-            print ", :default => #{field[:default]}" if field[:default]
-            print ", :null => false" if field[:not_null]
-            print "\n"
+          table_has_id = false
+          
+          fields = table[:fields].map do |field|
+                        
+            if field[:name].downcase == 'id'
+              table_has_id = true
+            else
+              
+              s = "\tt.#{field[:type]}, :#{field[:name]}"
+              s << ", :default => #{field[:default]}" if field[:default]
+              s << ", :null => false" if field[:not_null]
+              return s
+            end
           end
-
+          
+          puts "create_table :#{table[:name]}, do |t|"
+          puts s.join("\n")
           puts "end"
           #puts "    CONSTRAINTS; #{table[:constraints]}"
           #puts "    FOREIGN KEYS: #{table[:fks]}"
