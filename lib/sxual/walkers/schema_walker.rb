@@ -8,8 +8,10 @@ module Sxual
       def walk
         @data.each do |table|          
           table_has_id = false
+
+          fields = []
           
-          fields = table[:fields].each do |field|
+          table[:fields].each do |field|
             
             if field[:name].downcase == 'id'
               puts "ASSHOLE!!!!!!!"
@@ -22,6 +24,7 @@ module Sxual
             s = "\tt.#{field[:type]}, :#{field[:name]}"
             s += ", :default => #{field[:default]}" if field[:default]
             s += ", :null => false" if field[:not_null]
+            fields << s
           end
           
           puts "create_table :#{table[:name]}, do |t|"
