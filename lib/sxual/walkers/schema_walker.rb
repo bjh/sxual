@@ -13,7 +13,7 @@ module Sxual
             
             if field[:name].downcase == 'id'
               table_has_id = true
-              continue
+              next
             end
               
             s = "\tt.#{field[:type]}, :#{field[:name]}"
