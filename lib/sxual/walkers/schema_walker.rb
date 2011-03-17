@@ -17,8 +17,8 @@ module Sxual
             end
               
             s = "\tt.#{field[:type]}, :#{field[:name]}"
-            s << ", :default => #{field[:default]}" if field[:default]
-            s << ", :null => false" if field[:not_null]
+            s += ", :default => #{field[:default]}" if field[:default]
+            s += ", :null => false" if field[:not_null]
           end
           
           puts "create_table :#{table[:name]}, do |t|"
