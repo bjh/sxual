@@ -22,7 +22,7 @@ module Sxual
           end
           
           puts "create_table :#{table[:name]}, do |t|"
-          puts s.join("\n")
+          puts fields.join("\n")
           puts "end"
           #puts "    CONSTRAINTS; #{table[:constraints]}"
           #puts "    FOREIGN KEYS: #{table[:fks]}"
