@@ -14,13 +14,10 @@ module Sxual
           table[:fields].each do |field|
             
             if field[:name].downcase == 'id'
-              puts "ASSHOLE!!!!!!!"
               table_has_id = true
               next
             end
 
-            puts "FUCK: #{field[:name]}"
-              
             s = "\tt.#{field[:type]}, :#{field[:name]}"
             s += ", :default => #{field[:default]}" if field[:default]
             s += ", :null => false" if field[:not_null]
