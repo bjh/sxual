@@ -9,7 +9,7 @@ module Sxual
         @data.each do |table|          
           table_has_id = false
           
-          fields = table[:fields].collect do |field|
+          fields = table[:fields].each do |field|
             
             if field[:name].downcase == 'id'
               puts "ASSHOLE!!!!!!!"
