@@ -23,8 +23,8 @@ module Sxual
             s += ", :null => false" if field[:not_null]
             fields << s
           end
-          
-          puts "create_table :#{table[:name]}, do |t|"
+          force = table_has_id ? ":force => true, " : ''
+          puts "create_table :#{table[:name]}, #{force} do |t|"
           puts fields.join("\n")
           puts "end"
           #puts "    CONSTRAINTS; #{table[:constraints]}"
