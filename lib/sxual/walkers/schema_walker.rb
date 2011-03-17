@@ -26,6 +26,7 @@ module Sxual
           force = table_has_id ? ":force => true, " : ''
           puts "create_table :#{table[:name]}, #{force} do |t|"
           puts fields.join("\n")
+          puts "t.timestamps" if table_has_id
           puts "end"
           #puts "    CONSTRAINTS; #{table[:constraints]}"
           #puts "    FOREIGN KEYS: #{table[:fks]}"
