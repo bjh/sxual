@@ -1,12 +1,12 @@
 require 'nokogiri'
 require 'trollop'
 
-require 'sxual/args'
-require 'sxual/xpath'
-require 'sxual/sqs_parser'
-require 'sxual/walkers/base_walker'
-require 'sxual/walkers/default_walker'
-require 'sxual/walkers/schema_walker'
+require_relative 'sxual/args'
+require_relative 'sxual/xpath'
+require_relative 'sxual/sqs_parser'
+require_relative 'sxual/walkers/base_walker'
+require_relative 'sxual/walkers/default_walker'
+require_relative 'sxual/walkers/schema_walker'
 
 module Sxual
   DEBUG = true
