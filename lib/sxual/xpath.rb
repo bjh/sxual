@@ -1,5 +1,5 @@
 
-# accepts a nokogiti XML node/nodeset and Lumber::info a safe wrapper
+# accepts a nokogiri XML node/nodeset and Lumber::info a safe wrapper
 # around missing content/text node queries
 module Sxual
   class Xpath
